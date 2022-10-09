@@ -29,6 +29,7 @@ const settings = {
           })
           .then((response) => {
               // recibir el resultado del pago
+              console.log("RESPONJSE", response)
               resolve();
           })
           .catch((error) => {
