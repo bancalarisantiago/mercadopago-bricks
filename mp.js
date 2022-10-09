@@ -35,12 +35,14 @@ const settings = {
           })
           .catch((error) => {
               // tratar respuesta de error al intentar crear el pago
+              console.log(error)
               reject();
           })
         });
     },
     onError: (error) => { 
       // callback llamado para todos los casos de error de Brick
+      console.log(error)
     },
   },
 };
