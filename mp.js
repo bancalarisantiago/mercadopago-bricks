@@ -20,7 +20,7 @@ const settings = {
 
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-          fetch("/process_payment", { 
+          fetch("http://localhost:3001/api/v1/process_payment", { 
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
