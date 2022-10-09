@@ -20,12 +20,13 @@ const settings = {
 
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-          fetch("http://localhost:3001/api/v1/process_payment", { 
+          fetch("http://localhost:3001/api/v1/mercadopago/process_payment", { 
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
               },
-              body: JSON.stringify(cardFormData)
+              body: { card: JSON.stringify(cardFormData), testing: "ingo" }
+
           })
           .then((response) => {
               // recibir el resultado del pago
