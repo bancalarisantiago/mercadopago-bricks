@@ -25,7 +25,7 @@ const settings = {
               headers: {
                   "Content-Type": "application/json",
               },
-              body: { card: JSON.stringify(cardFormData), testing: "ingo" }
+              body: JSON.stringify(cardFormData),
 
           })
           .then((response) => {
