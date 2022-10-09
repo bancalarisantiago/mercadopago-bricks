@@ -17,7 +17,7 @@ const settings = {
     },
     onSubmit: (cardFormData) => {
       // callback llamado cuando el usuario haga clic en el botón enviar los datos
-        console.log("card form", cardFormData)
+        //console.log("card form", cardFormData)
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
           fetch("http://localhost:3001/api/v1/travel/process_payment", { 
