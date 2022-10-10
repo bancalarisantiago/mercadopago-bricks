@@ -20,7 +20,7 @@ const settings = {
         //console.log("card form", cardFormData)
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-          fetch("http://localhost:3001/api/v1/travel/process_payment", { 
+          fetch("http://10.0.2.2:3001/api/v1/travel/process_payment", { 
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
