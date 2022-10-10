@@ -72,7 +72,7 @@ const renderPaymentBrick = async (bricksBuilder) => {
       onSubmit: ({ selectedPaymentMethod, formData }) => {
         // callback llamado cuando el usuario haz clic en el botón enviar los datos
           return new Promise((resolve, reject) => {
-            fetch("http://localhost:3001/api/v1/travel/process_payment", {
+            fetch("http://10.0.2.2:3001/api/v1/travel/process_payment", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
