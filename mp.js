@@ -20,7 +20,7 @@ const settings = {
         //console.log("card form", cardFormData)
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-          fetch("https://192.168.0.51:3001/api/v1/travel/process_payment", { 
+          fetch("https://localhost:3001/api/v1/travel/process_payment", { 
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const renderPaymentBrick = async (bricksBuilder) => {
       onSubmit: ({ selectedPaymentMethod, formData }) => {
         // callback llamado cuando el usuario haz clic en el botón enviar los datos
           return new Promise((resolve, reject) => {
-            fetch("https://192.168.0.51:3001/api/v1/travel/process_payment", {
+            fetch("https://localhost:3001/api/v1/travel/process_payment", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
