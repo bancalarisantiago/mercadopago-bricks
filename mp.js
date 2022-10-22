@@ -6,13 +6,17 @@ const bricksBuilder = mp.bricks();
 
 
 const queryString = window.location.search;
-console.log("query", queryString);
+const urlParams = new URLSearchParams(queryString);
+const price = urlParams.get('price')
+
+
+
 
 const renderCardPaymentBrick = async (bricksBuilder) => {
-
+  console.log("Price", price)
 const settings = {
   initialization: {
-    amount: 100, // monto a ser pago
+    amount: price, // monto a ser pago
   },
   callbacks: {
     onReady: () => {
