@@ -1,4 +1,3 @@
-console.log("test")
 
 const mp = new MercadoPago('TEST-246e7b18-7353-4de7-b81a-d37a68af980e');
 
@@ -16,7 +15,7 @@ const renderCardPaymentBrick = async (bricksBuilder) => {
   console.log("Price", price)
 const settings = {
   initialization: {
-    amount: price, // monto a ser pago
+    amount: price ?? 100, // monto a ser pago
   },
   callbacks: {
     onReady: () => {
