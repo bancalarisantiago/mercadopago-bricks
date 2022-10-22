@@ -23,10 +23,11 @@ const settings = {
         //console.log("card form", cardFormData)
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-
           const capturePayment = {...cardFormData, capture : false}
 
           fetch("http://localhost:3001/api/v1/travel/process_payment", { 
+
+    
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
@@ -80,6 +81,7 @@ const renderPaymentBrick = async (bricksBuilder) => {
         // callback llamado cuando el usuario haz clic en el botón enviar los datos
           return new Promise((resolve, reject) => {
             fetch("http://localhost:3001/api/v1/travel/process_payment", {
+
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
