@@ -5,6 +5,9 @@ const mp = new MercadoPago('TEST-246e7b18-7353-4de7-b81a-d37a68af980e');
 const bricksBuilder = mp.bricks();
 
 
+const queryString = window.location.search;
+console.log("query", queryString);
+
 const renderCardPaymentBrick = async (bricksBuilder) => {
 
 const settings = {
@@ -20,13 +23,16 @@ const settings = {
         //console.log("card form", cardFormData)
       // ejemplo de envío de los datos recolectados por el Brick a su servidor
       return new Promise((resolve, reject) => {
-          fetch("https://192.168.0.51:3001/api/v1/travel/process_payment", { 
+
+          const capturePayment = {...cardFormData, capture : false}
+
+          fetch("http://localhost:3001/api/v1/travel/process_payment", { 
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
                   
               },
-              body: JSON.stringify(cardFormData),
+              body: JSON.stringify(capturePayment),
 
           })
           .then((response) => {
@@ -73,7 +79,7 @@ const renderPaymentBrick = async (bricksBuilder) => {
       onSubmit: ({ selectedPaymentMethod, formData }) => {
         // callback llamado cuando el usuario haz clic en el botón enviar los datos
           return new Promise((resolve, reject) => {
-            fetch("https://192.168.0.51:3001/api/v1/travel/process_payment", {
+            fetch("http://localhost:3001/api/v1/travel/process_payment", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
