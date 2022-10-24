@@ -28,7 +28,7 @@ const settings = {
       return new Promise((resolve, reject) => {
           const capturePayment = {...cardFormData, capture : false}
 
-          fetch("http://localhost:3001/api/v1/travel/process_payment", { 
+          fetch("http://10.0.2.1:5000/api/v1/mercadopago", { 
 
     
               method: "POST",
@@ -37,6 +37,7 @@ const settings = {
                   
               },
               body: JSON.stringify(capturePayment),
+              
 
           })
           .then((response) => {
