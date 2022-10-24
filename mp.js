@@ -30,7 +30,7 @@ const settings = {
       return new Promise((resolve, reject) => {
           const capturePayment = {...cardFormData, capture : false}
 
-          fetch("http://192.168.1.51:3001/api/v1/mercadopago/payment", { 
+          fetch("http://10.0.2.2:3001/api/v1/mercadopago/payment", { 
 
     
               method: "POST",
