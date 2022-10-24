@@ -7,15 +7,17 @@ const bricksBuilder = mp.bricks();
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const price = urlParams.get('price')
-
+const token = urlParams.get('token')
 
 
 
 const renderCardPaymentBrick = async (bricksBuilder) => {
   console.log("Price", price)
+  console.log("TOKEN", token )
 const settings = {
   initialization: {
     amount: price ?? 100, // monto a ser pago
+    
   },
   callbacks: {
     onReady: () => {
@@ -28,16 +30,16 @@ const settings = {
       return new Promise((resolve, reject) => {
           const capturePayment = {...cardFormData, capture : false}
 
-          fetch("http://10.0.2.2:3001/api/v1/mercadopago", { 
+          fetch("http://192.168.1.51:3001/api/v1/mercadopago/payment", { 
 
     
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
-                  
+                  "x-access-token": `${token}`
               },
               body: JSON.stringify(capturePayment),
-              
+              token
 
           })
           .then((response) => {
