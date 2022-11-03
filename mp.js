@@ -4,13 +4,13 @@ const mp = new MercadoPago('TEST-246e7b18-7353-4de7-b81a-d37a68af980e');
 const bricksBuilder = mp.bricks();
 
 
-// const queryString = window.location.search;
-// const urlParams = new URLSearchParams(queryString);
-// const price = urlParams.get('price')
-// const token = urlParams.get('token')
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const price = urlParams.get('price')
+const token = urlParams.get('token')
 
 
-
+console.log("TOKEN", token)
 const renderCardPaymentBrick = async (bricksBuilder) => {
  
   // let trimToken = token.trim();
@@ -18,7 +18,7 @@ const renderCardPaymentBrick = async (bricksBuilder) => {
 const settings = {
   
   initialization: {
-    amount:100, // monto a ser pago
+    amount: price ?? 100, // monto a ser pago
     
   },
   callbacks: {
@@ -33,16 +33,18 @@ const settings = {
           const capturePayment = {...cardFormData, capture : false}
 
             console.log("cardform", cardFormData)
-          fetch("http://localhost:3000/pagar", { 
+          fetch("http://192.168.0.51:3001/api/v1/travelpassenger/save/payments", { 
               method: "POST",
               headers: {
-                "Content-Type": "application/json",
+                'content-type': 'application/json',
+                'x-access-token': `${token}`,
+                'accept': 'application/json, text/plain, */*'
               },
               body: JSON.stringify(cardFormData),
           })
           .then((response) => {
               // recibir el resultado del pago
-             console.log("RESPONJS E", response)
+             console.log("RESPONSE API WEB", response)
               resolve();
           })
           .catch((error) => {
